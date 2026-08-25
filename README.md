@@ -20,6 +20,6 @@ npm install
 npm run dev
 ```
 
-## Additional information
+## What will be added leater?
 
-- Bible is available only in Polish
+- Bible in other languages
