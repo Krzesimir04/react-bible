@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     cors:true
   },
-  base:"/"
+  base:"/react-bible/"
 })
