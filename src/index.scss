@@ -1,0 +1,180 @@
+$backcolour: #fff;
+$primarycolour: rgb(47, 134, 241);
+$secondarycolour: rgb(60, 174, 255);
+$thirdcolour: rgb(91, 91, 91);
+
+$backcolour--dark: #3e3e3e;
+$primarycolour--dark: rgb(38, 111, 200);
+$secondarycolour--dark: rgb(48, 146, 216);
+$thirdcolour--dark: rgb(230, 230, 230);
+
+@mixin df {
+    display: flex;
+    align-items: center;
+}
+body{
+    margin: 0;
+}
+*{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+#root{
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25% 2% 73%;
+}
+form,.select-section{
+    @include df;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 300px;
+}
+form{
+    margin-top: 10rem;
+    align-self: start;
+}
+.select-section{
+    height: auto;
+}
+#line{
+    width: 3px;
+    height: 90%;
+    align-self: center;
+    background-color: $thirdcolour;
+}
+section{
+    padding: 1rem;
+    display: flex;
+}
+
+.bible-text{
+    align-self: center;
+}
+
+// in form
+select{
+    border: none;
+    padding: 5px;
+    border-radius: 20px;
+    width: 130px;
+    background-color: $secondarycolour;
+    &:hover{
+        background-color: $primarycolour;
+    }
+}
+button{
+    background-color: $secondarycolour;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: medium;
+    &:hover{
+        background-color: $primarycolour;
+    }
+}
+.dark-mode-container{
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+}
+
+// swich
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  bottom: 3.5px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(19px);
+  -ms-transform: translateX(19px);
+  transform: translateX(19px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+// swich - end
+
+
+@media screen and (max-width: 800px) {
+    #root {
+        display: block;
+    }
+    #line{
+        display: none;
+    }
+    form{
+        width: 90%;
+        margin-top: 3rem;
+        height: auto;
+        flex-direction: row;
+    }
+    section{
+        width: auto;
+        margin: 0.5em;
+    }
+}
+
+
+.dark{
+    color: $thirdcolour--dark;
+    background-color: $backcolour--dark;
+    select, button{
+        background-color: $secondarycolour--dark;
+        // color:$thirdcolour--dark;
+         &:hover{
+            background-color: $primarycolour--dark;
+        }
+    }
+}
