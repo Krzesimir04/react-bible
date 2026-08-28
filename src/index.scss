@@ -12,6 +12,36 @@ $thirdcolour--dark: rgb(230, 230, 230);
     display: flex;
     align-items: center;
 }
+
+@keyframes dot_animation {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(18px);
+    }
+}
+.loader{
+    display: grid;
+    position: absolute;
+    top:-115px;
+    grid-template-rows: min-content auto;
+    p{
+        overflow: hidden;
+    }
+    p::after{
+        content:"";
+        position:relative;
+        display: block;
+        width: 50%;
+        height: 100%;
+        background-color: $backcolour;
+        bottom:50%;
+        left:80%;
+        animation: dot_animation 3s infinite linear; 
+    }
+}
+
 body{
     margin: 0;
 }
@@ -30,14 +60,17 @@ form,.select-section{
     @include df;
     justify-content: space-between;
     flex-direction: column;
-    height: 300px;
+    // height: 300px;
+    padding-right: 20px;
 }
 form{
     margin-top: 10rem;
     align-self: start;
+    position:relative;
 }
 .select-section{
     height: auto;
+    margin: 10px;
 }
 #line{
     width: 3px;
@@ -64,6 +97,7 @@ select{
     &:hover{
         background-color: $primarycolour;
     }
+    margin-top: 5px;
 }
 button{
     background-color: $secondarycolour;
@@ -71,14 +105,17 @@ button{
     padding: 5px 10px;
     border-radius: 20px;
     font-size: medium;
+    margin: 10px;
     &:hover{
         background-color: $primarycolour;
     }
 }
 .dark-mode-container{
     display: grid;
-    grid-template-columns: 90% 10%;
+    grid-template-columns: 65% 35%;
     align-items: center;
+    justify-content: right;
+    min-width: 10em;
 }
 
 // swich
@@ -155,14 +192,21 @@ input:checked + .slider:before {
         display: none;
     }
     form{
-        width: 90%;
-        margin-top: 3rem;
+        margin-top: 5rem;
         height: auto;
-        flex-direction: row;
+        padding-right: 0;
     }
     section{
         width: auto;
         margin: 0.5em;
+        display: block;
+    }
+    .loader{
+        grid-template-rows: max-content;
+        grid-template-columns: 70px max-content;
+        align-items: center;
+        gap: 10px;
+        top:-70px;
     }
 }
 
@@ -175,6 +219,12 @@ input:checked + .slider:before {
         // color:$thirdcolour--dark;
          &:hover{
             background-color: $primarycolour--dark;
+        }
+    }
+    .loader{
+        fill:$thirdcolour--dark;
+        p::after{
+            background-color: $backcolour--dark;
         }
     }
 }

@@ -1,3 +1,32 @@
+@keyframes dot_animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(18px);
+  }
+}
+.loader {
+  display: grid;
+  position: absolute;
+  top: -115px;
+  grid-template-rows: min-content auto;
+}
+.loader p {
+  overflow: hidden;
+}
+.loader p::after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  bottom: 50%;
+  left: 80%;
+  animation: dot_animation 3s infinite linear;
+}
+
 body {
   margin: 0;
 }
@@ -20,16 +49,18 @@ form, .select-section {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  height: 300px;
+  padding-right: 20px;
 }
 
 form {
   margin-top: 10rem;
   align-self: start;
+  position: relative;
 }
 
 .select-section {
   height: auto;
+  margin: 10px;
 }
 
 #line {
@@ -58,6 +89,9 @@ select {
 select:hover {
   background-color: rgb(47, 134, 241);
 }
+select {
+  margin-top: 5px;
+}
 
 button {
   background-color: rgb(60, 174, 255);
@@ -65,6 +99,7 @@ button {
   padding: 5px 10px;
   border-radius: 20px;
   font-size: medium;
+  margin: 10px;
 }
 button:hover {
   background-color: rgb(47, 134, 241);
@@ -72,8 +107,10 @@ button:hover {
 
 .dark-mode-container {
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 65% 35%;
   align-items: center;
+  justify-content: right;
+  min-width: 10em;
 }
 
 /* The switch - the box around the slider */
@@ -143,14 +180,21 @@ input:checked + .slider:before {
     display: none;
   }
   form {
-    width: 90%;
-    margin-top: 3rem;
+    margin-top: 5rem;
     height: auto;
-    flex-direction: row;
+    padding-right: 0;
   }
   section {
     width: auto;
     margin: 0.5em;
+    display: block;
+  }
+  .loader {
+    grid-template-rows: max-content;
+    grid-template-columns: 70px max-content;
+    align-items: center;
+    gap: 10px;
+    top: -70px;
   }
 }
 .dark {
@@ -162,4 +206,10 @@ input:checked + .slider:before {
 }
 .dark select:hover, .dark button:hover {
   background-color: rgb(38, 111, 200);
+}
+.dark .loader {
+  fill: rgb(230, 230, 230);
+}
+.dark .loader p::after {
+  background-color: #3e3e3e;
 }/*# sourceMappingURL=index.css.map */
